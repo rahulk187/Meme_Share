@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="margin: 160px auto auto auto;
+    width: 60%;
+    padding: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);">
+        <h1>Welcome to the home page..</h1>
+        <form action="http://localhost:3000/createUser" method="post" enctype="multipart/form-data">
+
+            <label for="first">user_id : </label>
+            <input type="text" placeholder="user_id" name="user_id" required>
+
+            <label for="first">user_name : </label>
+            <input type="text" placeholder="user_name" name="user_name"
+                required>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+            <label for="last">user_email : </label>
+            <input type="email" placeholder="user_email" name="user_email" required>
+            <br><br>
+
+
+            <label for="email">password : </label>
+            <input type="password" placeholder="password" name="password" required>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+            <label for="phone">mobile : </label>
+            <input type="text" placeholder="mobile" name="mobile">
+            <br><br>
+
+
+            <label for="dob">dob : </label>
+            <input type="date" name="dob">
+            <br><br>
+
+
+            <label for="Male">Male : </label>
+            <input type="radio" name="gender" value="Male">
+            <label for="Female">Female : </label>
+            <input type="radio" name="gender" value="Female">
+
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <br><br>
+
+            <label for="dp">dp : </label>
+            <input type="file" accept="image/*"  name="dp">
+
+            <label for="bio">bio : </label>
+            <input type="text" placeholder="bio" name="bio">
+
+            <label for="skills">skills : </label>
+            <input type="text" placeholder="skills" name="skills">
+
+            <label for="intrests">intrests : </label>
+            <input type="text" placeholder="intrests" name="intrests">
+
+            <select name="user_profile">
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+            </select>
+
+            <input type="submit">
+        </form>
+    </div>
+</body>
+
+</html>

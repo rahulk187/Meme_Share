@@ -9,24 +9,22 @@ const createPost = require('./dao/CreatePost');
 const setLikePost = require('./dao/LikePost');
 const deletePost = require('./dao/DeletePost');
 const comment = require('./dao/Comment.js');
-const {createComment, deleteComment} = require('./dao/Comment')
+const {createComment, deleteComment} = require('./dao/Comment');
+const showPosts = require('./dao/Feed');
+const {addFriend, removeFriend} = require('./dao/Friend')
 
-
-// const path = require('path');
-// const multer = require('multer');
-
-// routes.use(express.static(path.join(__dirname, './public')));
-
-// var Storage = multer.diskStorage({
-//     destination : './public/uploads/',
-//     filename : (req,file,cb) => {
-//         cb(null,file.fieldname+'_'+Date.now()+path.extname(file.originalname))
+// var multer = require('multer');
+  
+// var storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, './public/uploads')
+//     },
+//     filename: (req, file, cb) => {
+//         cb(null, file.fieldname + '-' + Date.now())
 //     }
-// })
-
-// var Upload = multer({
-//     storage : Storage
-// }).single('file')
+// });
+  
+// var upload = multer({ storage: storage });
 
 
 // User API's
@@ -83,18 +81,18 @@ routes.post('/deleteComment',(_,response)=>{
 
 // Friend API's 
 
-routes.get('addFriend',(_,response)=>{
-    response.end('create user api')
+routes.post('/addFriend',(_,response)=>{
+    addFriend(_,response)
 })
 
-routes.get('removeFriend',(_,response)=>{
-    response.end('create user api')
+routes.post('/removeFriend',(_,response)=>{
+    removeFriend(_,response)
 })
 
 // Feed API's 
 
-routes.get('createFeed',(_,response)=>{
-    response.end('create user api')
+routes.post('/feed',(_,response)=>{
+    showPosts(_,response)
 })
 
 module.exports = routes;

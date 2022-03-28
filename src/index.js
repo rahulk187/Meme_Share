@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
-const routes = require('./routes')
+const routes = require('./routes');
 const bodyParser = require('body-parser');
+const db = require('./models/connection');
 
 app.use(bodyParser.urlencoded({ extended: true }))
 

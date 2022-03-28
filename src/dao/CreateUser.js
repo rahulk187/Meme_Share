@@ -1,5 +1,6 @@
 const User = require('../models/UserModel')
 
+
 async function persistUser(req,res){
     const user = new User({
         _id : req.body.user_id,
@@ -9,7 +10,7 @@ async function persistUser(req,res){
         mobile : req.body.mobile,
         dob : req.body.dob,
         gender : req.body.gender,
-        dp : req.body.dp,
+        dp : '',
         bio : req.body.bio,
         skills : req.body.skills,
         interests : req.body.interests,

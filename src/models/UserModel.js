@@ -1,5 +1,4 @@
-const mongoose = require('mongoose')
-const db = require('./connection')
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     _id : {
@@ -22,6 +21,7 @@ const userSchema = new mongoose.Schema({
     bio : String,
     skills : String,
     interests : String,
+    friends : [{friend_user_id: Number}],
     user_profile : String,
     status : Number
 })

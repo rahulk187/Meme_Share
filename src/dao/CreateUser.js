@@ -1,4 +1,5 @@
 const User = require('../models/UserModel')
+const fs = require('fs')
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -8,6 +9,9 @@ async function persistUser(req,res){
 
     const hash = bcrypt.hashSync(req.body.password, saltRounds);
 
+    var img = fs.readFileSync(req.file.path)
+    var encode_image = img.toString('base64')
+
     const user = new User({
         _id : req.body.user_id,
         user_name : req.body.user_name,
@@ -16,7 +20,10 @@ async function persistUser(req,res){
         mobile : req.body.mobile,
         dob : req.body.dob,
         gender : req.body.gender,
-        dp : '',
+        dp : {
+            data: new Buffer(encode_image, 'base64'),
+            contentType: req.file.mimetype
+        },
         bio : req.body.bio,
         skills : req.body.skills,
         interests : req.body.interests,

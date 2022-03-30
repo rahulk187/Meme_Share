@@ -17,7 +17,10 @@ const userSchema = new mongoose.Schema({
     mobile : Number,
     dob : Date,
     gender : String,
-    dp : String,
+    dp : {
+        data: Buffer,
+        contentType: String
+    },
     bio : String,
     skills : String,
     interests : String,

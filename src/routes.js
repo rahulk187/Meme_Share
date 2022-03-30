@@ -28,7 +28,7 @@ var upload = multer({ storage: storage });
 
 // User API's
 
-routes.post('/createUser', (_,response)=>{
+routes.post('/createUser', upload.single('dp'), (_,response)=>{
     persistUser(_,response)
     .catch(err => {})
 })

@@ -8,23 +8,22 @@ const inactive = require('./dao/InactiveUser');
 const createPost = require('./dao/CreatePost');
 const setLikePost = require('./dao/LikePost');
 const deletePost = require('./dao/DeletePost');
-const comment = require('./dao/Comment.js');
 const {createComment, deleteComment} = require('./dao/Comment');
 const showPosts = require('./dao/Feed');
 const {addFriend, removeFriend} = require('./dao/Friend')
 
-// var multer = require('multer');
+const multer = require('multer');
+const path = require('path');
   
-// var storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, './public/uploads')
-//     },
-//     filename: (req, file, cb) => {
-//         cb(null, file.fieldname + '-' + Date.now())
-//     }
-// });
-  
-// var upload = multer({ storage: storage });
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+});
+var upload = multer({ storage: storage });
 
 
 // User API's
@@ -51,7 +50,7 @@ routes.get('/inactiveUser',(_,response)=>{
 
 // Post API's 
 
-routes.post('/createPost',(_,response)=>{
+routes.post('/createPost', upload.single('image'), (_,response)=>{
     createPost(_,response)
     .catch(err => {})
 })

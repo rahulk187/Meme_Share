@@ -2,7 +2,10 @@ const mongoose = require('mongoose')
 
 const postSchema = new mongoose.Schema({
     post: {
-        image: String,
+        image: {
+            data: Buffer,
+            contentType: String
+        },
         text: String,
         created: Date
     },

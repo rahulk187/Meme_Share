@@ -7,8 +7,8 @@
     <title>Create Post</title>
 </head>
 <body>
-    <form action="http://localhost:3000/createPost" method="post">
-        <input type="text" placeholder="picture" name="picture">
+    <form action="http://localhost:3000/createPost" method="post" enctype="multipart/form-data">
+        <input type="file" placeholder="picture" name="image" accept="image/*">
         <input type="text" placeholder="Quote" name="quote">
         <input type="text" placeholder="user_id" name="user_id" required>
         <input type="submit">

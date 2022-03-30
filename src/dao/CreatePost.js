@@ -4,6 +4,7 @@ const fs = require('fs')
 async function createPost(req,res){
     var img = fs.readFileSync(req.file.path)
     var encode_image = img.toString('base64')
+
     // var finalImage = {
     //     contentType: req.file.mimetype,
     //     image: new Buffer(encode_image, 'base64')

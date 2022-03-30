@@ -1,12 +1,18 @@
 const User = require('../models/UserModel')
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 
 async function persistUser(req,res){
+
+    const hash = bcrypt.hashSync(req.body.password, saltRounds);
+
     const user = new User({
         _id : req.body.user_id,
         user_name : req.body.user_name,
         user_email : req.body.user_email,
-        password : req.body.password,
+        password : hash,
         mobile : req.body.mobile,
         dob : req.body.dob,
         gender : req.body.gender,

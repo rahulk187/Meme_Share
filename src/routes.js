@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 
-const persistUser = require('./dao/CreateUser');
+const {persistUserWithDp, persistUserWithoutDp} = require('./dao/CreateUser');
 const login = require('./dao/LoginUser');
 const update = require('./dao/UpdateUser');
 const inactive = require('./dao/InactiveUser');
@@ -28,8 +28,13 @@ var upload = multer({ storage: storage });
 
 // User API's
 
-routes.post('/createUser', upload.single('dp'), (_,response)=>{
-    persistUser(_,response)
+routes.post('/createUserWithdp', upload.single('dp'), (_,response)=>{
+    persistUserWithDp(_,response)
+    .catch(err => {})
+})
+
+routes.post('/createUserWithoutdp', (_,response)=>{
+    persistUserWithoutDp(_,response)
     .catch(err => {})
 })
 
@@ -50,7 +55,12 @@ routes.get('/inactiveUser',(_,response)=>{
 
 // Post API's 
 
-routes.post('/createPost', upload.single('image'), (_,response)=>{
+routes.post('/createPostWithImage', upload.single('image'), (_,response)=>{
+    createPost(_,response)
+    .catch(err => {})
+})
+
+routes.post('/createPostWithoutImage', (_,response)=>{
     createPost(_,response)
     .catch(err => {})
 })
@@ -59,7 +69,7 @@ routes.post('/likePost',(_,response)=>{
     setLikePost(_,response)
 })
 
-// routes.get('sharePost',(_,response)=>{
+// routes.get('/sharePost',(_,response)=>{
 //     // single 
 //     // multiple 
 //     response.end('create user api')
@@ -92,6 +102,16 @@ routes.post('/removeFriend',(_,response)=>{
 
 routes.post('/feed',(_,response)=>{
     showPosts(_,response)
+})
+
+// Image API's 
+
+routes.post('/uploadDp', upload.single('dp'), (_,response)=>{
+    response.end()
+})
+
+routes.post('/uploadImage', upload.single('image'), (_,response)=>{
+    response.end()
 })
 
 module.exports = routes;

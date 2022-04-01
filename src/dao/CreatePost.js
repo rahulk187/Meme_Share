@@ -12,11 +12,11 @@ async function createPost(req,res){
 
     const post = new Post({
         post: {
-            image: {
-                data: new Buffer(encode_image, 'base64'),
-                contentType: req.file.mimetype
-            },
-            text: '',
+            // image: {
+            //     data: new Buffer(encode_image, 'base64'),
+            //     contentType: req.file.mimetype
+            // },
+            text: req.body.quote,
             created: new Date()
         },
         likes: 0,

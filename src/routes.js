@@ -5,7 +5,7 @@ const {persistUserWithDp, persistUserWithoutDp} = require('./dao/CreateUser');
 const login = require('./dao/LoginUser');
 const update = require('./dao/UpdateUser');
 const inactive = require('./dao/InactiveUser');
-const createPost = require('./dao/CreatePost');
+const {createPostWithImage, createPostWithoutImage} = require('./dao/CreatePost');
 const setLikePost = require('./dao/LikePost');
 const deletePost = require('./dao/DeletePost');
 const {createComment, deleteComment} = require('./dao/Comment');
@@ -56,12 +56,12 @@ routes.get('/inactiveUser',(_,response)=>{
 // Post API's 
 
 routes.post('/createPostWithImage', upload.single('image'), (_,response)=>{
-    createPost(_,response)
+    createPostWithImage(_,response)
     .catch(err => {})
 })
 
 routes.post('/createPostWithoutImage', (_,response)=>{
-    createPost(_,response)
+    createPostWithoutImage(_,response)
     .catch(err => {})
 })
 

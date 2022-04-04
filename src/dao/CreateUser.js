@@ -26,7 +26,7 @@ async function persistUserWithDp(req,res){
         // },
         bio : req.body.bio,
         skills : req.body.skills,
-        interests : req.body.intrests,
+        interests : req.body.interests,
         user_profile : req.body.user_profile,
         status : 1
     }) 
@@ -58,7 +58,7 @@ async function persistUserWithoutDp(req,res){
         // },
         bio : req.body.bio,
         skills : req.body.skills,
-        interests : req.body.intrests,
+        interests : req.body.interests,
         user_profile : req.body.user_profile,
         status : 1
     }) 

@@ -21,12 +21,12 @@ async function createComment(req, res) {
 async function deleteComment(req, res) {
     
     let post_id = req.body.post_id
-    let comment_id = req.body.comment_id
+    let commentedUser = req.body.commentedUser
 
     await Post.updateOne
     (
         {_id: post_id}, 
-        {$pull: {comments: {_id: comment_id}}}, 
+        {$pull: {comments: {commentedUser: commentedUser}}}, 
         {new:true}
     )
     .then(function (post) {res.send(post)})

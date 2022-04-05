@@ -20,12 +20,12 @@ export default function Profile() {
               />
               <img
                 className="profileUserImg"
-                src="assets/person/7.jpeg"
+                src="assets/profiel.jpg"
                 alt=""
               />
             </div>
             <div className="profileInfo">
-                <h4 className="profileInfoName">Safak Kocaoglu</h4>
+                <h4 className="profileInfoName">Shiwam Bhargava</h4>
                 <span className="profileInfoDesc">Hello my friends!</span>
             </div>
           </div>

@@ -1,14 +1,27 @@
 import { EmojiEmotions, Label, PermMedia, Room } from '@mui/icons-material'
 import React from 'react'
 import './share.css'
+import { useState } from 'react'
+import axios from 'axios'
+
 
 export default function Share() {
+    const[share,setShare]=useState('')
+    async function handleShareButton(){
+        const res = await axios.post('http://localhost:3000/createPostWithoutImage',val)
+        console.log(res)
+    }
+
+    const val={quote:share}
+    function handleInputChange(e){
+        setShare(e.target.value)
+    }
   return (
    <div className="share">
        <div className="shareWrapper">
            <div className="shareBottom">
                <img src="/assets/profiel.jpg" alt="" className="shareProfileImg" />
-               <input placeholder="what's in your mind ?" className="shareInput" />
+               <input placeholder="what's in your mind ?" onChange={e=>handleInputChange(e)} className="shareInput" />
            </div>
            <hr className="shareHr" />
            <div className="shareBottom">
@@ -30,7 +43,7 @@ export default function Share() {
                        <span className='shareOptionText'>Feelings</span>
                    </div>
                </div>
-               <button className="shareButton">Share</button>
+               <button className="shareButton" onClick={handleShareButton}>Share</button>
            </div>
        </div>
    </div>

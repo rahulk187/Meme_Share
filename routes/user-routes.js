@@ -1,16 +1,16 @@
 const express = require('express');
 const routes = express.Router();
 
-const {persistUserWithDp, persistUserWithoutDp} = require('./dao/CreateUser');
-const login = require('./dao/LoginUser');
-const update = require('./dao/UpdateUser');
-const inactive = require('./dao/InactiveUser');
-const {createPostWithImage, createPostWithoutImage} = require('./dao/CreatePost');
-const setLikePost = require('./dao/LikePost');
-const deletePost = require('./dao/DeletePost');
-const {createComment, deleteComment} = require('./dao/Comment');
-const showPosts = require('./dao/Feed');
-const {addFriend, removeFriend} = require('./dao/Friend')
+const {persistUserWithDp, persistUserWithoutDp} = require('../dao/CreateUser');
+const login = require('../dao/LoginUser');
+const update = require('../dao/UpdateUser');
+const inactive = require('../dao/InactiveUser');
+const {createPostWithImage, createPostWithoutImage} = require('../dao/CreatePost');
+const setLikePost = require('../dao/LikePost');
+const deletePost = require('../dao/DeletePost');
+const {createComment, deleteComment} = require('../dao/Comment');
+const showPosts = require('../dao/Feed');
+const {addFriend, removeFriend} = require('../dao/Friend')
 
 const multer = require('multer');
 const path = require('path');

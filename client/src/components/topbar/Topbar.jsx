@@ -4,6 +4,11 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
+function deleteAllCookies() {
+  window.localStorage.clear();
+  window.location.href='/login'
+}
+
 export default function Topbar() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -52,6 +57,9 @@ export default function Topbar() {
             alt=""
             className="topbarImg"
           />
+        </Link>
+        <Link to='/login'>
+          <button onClick={deleteAllCookies}>logout</button>
         </Link>
       </div>
     </div>

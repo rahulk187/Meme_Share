@@ -28,10 +28,10 @@
   object-fit: cover;
 }
 
-.postUsername {
-  font-size: 15px;
-  font-weight: 500;
-  margin: 0 10px;
+.postUsername  {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  margin: 0 10px !important;
 }
 
 .postDate{
@@ -75,4 +75,9 @@
     cursor: pointer;
     border-bottom: 1px dashed gray;
     font-size: 15px;
+}
+.shareInput{
+    border: groove;
+    width: 45rem;
+    display: flex;
 }

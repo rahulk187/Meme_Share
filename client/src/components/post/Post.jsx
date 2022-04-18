@@ -104,7 +104,9 @@ const handleModal=()=>{
             <span className="postLikeCounter">{like} likes</span>
           </div>
           <div className="postBottomRight">
-            <span className="postCommentText">{post.comments.comment}</span>
+              <span className="postCommentText">{post.comments[0]?.comment}</span><br />
+              <span className="postCommentText">{post.comments[1]?.comment}</span><br />
+              <span className="postCommentText">{post.comments[2]?.comment}</span><br />
             <input
             placeholder={"Comment " + user.username + "?"}
             className="shareInput"

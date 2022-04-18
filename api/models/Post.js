@@ -17,10 +17,10 @@ const PostSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
-    comments: {
-      comment: Array,
-      commentedUser:[] 
-  },
+    comments:  [{
+      comment: String,
+      commentedUser: String
+  }],
   },
   { timestamps: true }
 );

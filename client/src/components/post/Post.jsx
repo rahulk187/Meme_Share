@@ -48,7 +48,7 @@ export default function Post({ post }) {
   }
   const commentHandler=()=>{
     try{
-      axios.post(`http://localhost:8800/api/comment`,{comment,post_id:post._id,user_id:currentUser._id})
+      axios.put(`http://localhost:8800/api/comment/createComment`,{comment,post_id:post._id,user_id:currentUser._id})
     }catch(err){}
   }
 

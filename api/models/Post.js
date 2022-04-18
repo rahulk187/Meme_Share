@@ -18,8 +18,8 @@ const PostSchema = new mongoose.Schema(
       default: [],
     },
     comments: {
-      comment: String,
-      commentedUser: Number
+      comment: Array,
+      commentedUser:[] 
   },
   },
   { timestamps: true }

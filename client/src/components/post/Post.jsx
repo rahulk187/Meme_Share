@@ -1,5 +1,5 @@
 import "./post.css";
-import { MoreVert } from "@material-ui/icons";
+import { Feedback, MoreVert } from "@material-ui/icons";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
@@ -7,9 +7,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Dropdown } from 'react-bootstrap';
 import { useRef } from "react";
+import { ReactDimmer } from "react-dimmer";
+import { Modal } from "../modal/Modal";
+
 
 export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
+  const[isModalOpen,setModal]=useState(false)
   const [isLiked, setIsLiked] = useState(false);
   const[comment,setComment]=useState('')
   const [user, setUser] = useState({});
@@ -27,7 +31,7 @@ export default function Post({ post }) {
       setUser(res.data);
     };
     fetchUser();
-  }, [post.userId]);
+  }, [post.userId,post]);
 
   const likeHandler = () => {
     try {
@@ -44,11 +48,14 @@ export default function Post({ post }) {
   }
   const commentHandler=()=>{
     try{
-      axios.post(`/comment/${post._id}/comment`,{_id:post._id})
+      axios.post(`http://localhost:8800/api/comment`,{comment,post_id:post._id,user_id:currentUser._id})
     }catch(err){}
   }
 
+const handleModal=()=>{
+  setModal((prevState) => !prevState)}
   return (
+    <>
     <div className="post">
       <div className="postWrapper">
         <div className="postTop">
@@ -67,16 +74,18 @@ export default function Post({ post }) {
             </Link>
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
+      
           <div className="postTopRight">
             <Dropdown>
               <Dropdown.Toggle variant="success"  id="dropdown-basic">
               <MoreVert />
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item >Edit</Dropdown.Item>
+                <Dropdown.Item onClick={handleModal} >Edit</Dropdown.Item>
                 <Dropdown.Item >Spam</Dropdown.Item>
                 <Dropdown.Item onClick={deletePost}>Delete</Dropdown.Item>
               </Dropdown.Menu>
+
             </Dropdown>
           </div>
         </div>
@@ -95,7 +104,7 @@ export default function Post({ post }) {
             <span className="postLikeCounter">{like} likes</span>
           </div>
           <div className="postBottomRight">
-            <span className="postCommentText">{post.comment}</span>
+            <span className="postCommentText">{post.comments.comment}</span>
             <input
             placeholder={"Comment " + user.username + "?"}
             className="shareInput"
@@ -108,5 +117,13 @@ export default function Post({ post }) {
         </div>
       </div>
     </div>
+    {isModalOpen && <Modal closeModal={setModal} />}
+    <ReactDimmer
+          isOpen={isModalOpen}
+          exitDimmer={setModal}
+          zIndex={100}
+          blur={1.5}
+        />
+    </>
   );
 }

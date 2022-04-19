@@ -48,7 +48,7 @@ export default function Post({ post }) {
   }
   const commentHandler=()=>{
     try{
-      axios.post(`http://localhost:8800/api/comment`,{comment,post_id:post._id,user_id:currentUser._id})
+      axios.put(`http://localhost:8800/api/comment/createComment`,{comment,post_id:post._id,user_id:currentUser._id})
     }catch(err){}
   }
 
@@ -104,7 +104,9 @@ const handleModal=()=>{
             <span className="postLikeCounter">{like} likes</span>
           </div>
           <div className="postBottomRight">
-            <span className="postCommentText">{post.comments[0].comment}</span>
+              <span className="postCommentText">{post.comments[0]?.comment}</span><br />
+              <span className="postCommentText">{post.comments[1]?.comment}</span><br />
+              <span className="postCommentText">{post.comments[2]?.comment}</span><br />
             <input
             placeholder={"Comment " + user.username + "?"}
             className="shareInput"

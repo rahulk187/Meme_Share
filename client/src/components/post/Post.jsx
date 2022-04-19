@@ -82,7 +82,7 @@ const handleModal=()=>{
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item onClick={handleModal} >Edit</Dropdown.Item>
-                <Dropdown.Item >Spam</Dropdown.Item>
+                {/* <Dropdown.Item >Spam</Dropdown.Item> */}
                 <Dropdown.Item onClick={deletePost}>Delete</Dropdown.Item>
               </Dropdown.Menu>
 
@@ -104,7 +104,7 @@ const handleModal=()=>{
             <span className="postLikeCounter">{like} likes</span>
           </div>
           <div className="postBottomRight">
-            <span className="postCommentText">{post.comments.comment}</span>
+            <span className="postCommentText">{post.comments[0].comment}</span>
             <input
             placeholder={"Comment " + user.username + "?"}
             className="shareInput"

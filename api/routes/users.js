@@ -50,6 +50,7 @@ router.get("/", async (req, res) => {
       : await User.findOne({ username: username });
     const { password, updatedAt, ...other } = user._doc;
     res.status(200).json(other);
+    // res.send(user);
   } catch (err) {
     res.status(500).json(err);
   }

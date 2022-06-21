@@ -1,5 +1,5 @@
 import "./post.css";
-import { Feedback, MoreVert } from "@material-ui/icons";
+import {  MoreVert } from "@material-ui/icons";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
@@ -53,7 +53,7 @@ export default function Post({ post }) {
   }
 
 const handleModal=()=>{
-  setModal((prevState) => !prevState)}
+  setModal((isModalOpen) => !isModalOpen)}
   return (
     <>
     <div className="post">
@@ -107,6 +107,8 @@ const handleModal=()=>{
               <span className="postCommentText">{post.comments[0]?.comment}</span><br />
               <span className="postCommentText">{post.comments[1]?.comment}</span><br />
               <span className="postCommentText">{post.comments[2]?.comment}</span><br />
+              {/* <span className="postCommentText">{post.comments.map((comment) => (comment
+        ))}</span> */}
             <input
             placeholder={"Comment " + user.username + "?"}
             className="shareInput"
@@ -114,12 +116,12 @@ const handleModal=()=>{
             onClick={commentHandler}
             onChange={(e) => setComment(e.target.value)}
           />
-          {console.log(comment)}
+          {/* {console.log(comment)} */}
           </div>
         </div>
       </div>
     </div>
-    {isModalOpen && <Modal closeModal={setModal} />}
+    {isModalOpen && <Modal closeModal={setModal}  modal={isModalOpen} />}
     <ReactDimmer
           isOpen={isModalOpen}
           exitDimmer={setModal}

@@ -1,12 +1,15 @@
 import * as React from "react";
+import "./modal.css"
 
-export const Modal = ({ closeModal }) => {
+
+
+export const Modal = ( {closeModal,modal}) => {
   return (
     <div className="modal">
       <div className="modal-header">
         <h2
           onClick={() => {
-            closeModal(false);
+            closeModal(!modal);
           }}
         >
           X
